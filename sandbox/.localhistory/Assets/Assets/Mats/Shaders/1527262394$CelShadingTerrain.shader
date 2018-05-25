@@ -26,7 +26,7 @@
 		LOD 200
 
 		CGPROGRAM
-		#pragma surface surf CelShading fullforwardshadows
+		#pragma surface surf CelShading 
 		#pragma target 3.0
 		#pragma debug
 

@@ -13,7 +13,7 @@
 	SubShader{
 		Tags{ "RenderType" = "Opaque" }
 		CGPROGRAM
-		#pragma surface surf CelShading fullforwardshadows
+		#pragma surface surf CelShading
 
 		half4 LightingCelShading(SurfaceOutput s, half3 lightDir, half atten) {
 			half NdotL = dot(s.Normal, lightDir);
