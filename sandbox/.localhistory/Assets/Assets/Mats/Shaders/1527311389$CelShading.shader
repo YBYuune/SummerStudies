@@ -7,8 +7,7 @@
 	//////////////////////////////////////////////////////////////
 	Properties{
 		_MainTex("Texture", 2D) = "white" {}
-		_Specular("Specular Power", Range(0, 1)) = 0
-		_Gloss("Specular Intensity", Float) = 0
+		_Specular("Specular Intensity", Range(0, 1)) = 0
 		_Emissive("Emissive Texture", 2D) = "white" {}
 		_ColorBlend("Color", Color) = (1,1,1,1)
 		[MaterialToggle]_isTerrain("Is Terrain", Float) = 0
@@ -18,37 +17,32 @@
 		CGPROGRAM
 		#pragma surface surf CelShading fullforwardshadows
 
-		half _Specular;
-		fixed _Gloss;
-		half3 vDir = half3(0,0,0);
+		float _Specular;
 
-		half4 LightingCelShading(SurfaceOutput s, half3 lightDir, half3 viewDir, half atten) {
-			//diffuse
+		half4 LightingCelShading(SurfaceOutput s, half3 lightDir, half atten) {
 			half NdotL = dot(s.Normal, lightDir);
 			if (NdotL <= 0.0)NdotL = 0.0;
 			else NdotL = 1.0;
 
+			half nh = max(0,dot(s.Normal, dot(s.Normal, lightDir)));
+			half spec = pow(nh, _Specular);
+			
+			//if (spec <= 0.0)spec = 0.0;
+			//else spec = 1.0;
+
 			half TAtten = atten;
+
 			if (TAtten > .0) TAtten = 1.0;
 			else TAtten = 0.0;
 
-			//specular
-
-			half3 h = normalize(lightDir + viewDir);
-			float nh = (dot(s.Normal, h));
-			float spec = pow(nh, s.Gloss) * s.Specular;
-			if (spec > 0.5) spec = 1.0;
-			else spec = 0.0;
 			half4 c;
-			c.rgb = (s.Albedo * _LightColor0.rgb * NdotL + _LightColor0.rgb * spec) * (TAtten * 2);
+			c.rgb = ((s.Albedo * _LightColor0.rgb)  * (NdotL * TAtten)) + ((s.Albedo * _LightColor0.rgb)  * (spec * TAtten));
 			c.a = s.Alpha;
 			return c;
 		}
 
 		struct Input {
-			float2 uv_MainTex; 
-			float3 viewDir;
-			float3 worldPos;
+			float2 uv_MainTex;
 		};
 
 		sampler2D _MainTex;
@@ -57,12 +51,6 @@
 
 		void surf(Input IN, inout SurfaceOutput o) {
 			half4 texel = tex2D(_MainTex, IN.uv_MainTex);
-
-			vDir = IN.viewDir;
-
-			o.Gloss = _Gloss;
-			o.Specular = _Specular;
-
 			if (texel.a > 0.1)
 				o.Albedo = texel.rgb*_ColorBlend.rgb;
 			else if(!_isTerrain)

@@ -36,9 +36,10 @@
 
 			half3 h = normalize(lightDir + viewDir);
 			float nh = (dot(s.Normal, h));
-			float spec = pow(nh, s.Gloss) * s.Specular;
-			if (spec > 0.5) spec = 1.0;
-			else spec = 0.0;
+			if (nh <= 0.0)nh = 0.0;
+			else nh = 1.0;
+			float spec = pow(nh, 128);
+
 			half4 c;
 			c.rgb = (s.Albedo * _LightColor0.rgb * NdotL + _LightColor0.rgb * spec) * (TAtten * 2);
 			c.a = s.Alpha;
@@ -60,7 +61,6 @@
 
 			vDir = IN.viewDir;
 
-			o.Gloss = _Gloss;
 			o.Specular = _Specular;
 
 			if (texel.a > 0.1)

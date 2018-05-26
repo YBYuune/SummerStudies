@@ -23,7 +23,7 @@
 		half3 vDir = half3(0,0,0);
 
 		half4 LightingCelShading(SurfaceOutput s, half3 lightDir, half3 viewDir, half atten) {
-			//diffuse
+			//
 			half NdotL = dot(s.Normal, lightDir);
 			if (NdotL <= 0.0)NdotL = 0.0;
 			else NdotL = 1.0;
@@ -34,13 +34,11 @@
 
 			//specular
 
-			half3 h = normalize(lightDir + viewDir);
-			float nh = (dot(s.Normal, h));
-			float spec = pow(nh, s.Gloss) * s.Specular;
-			if (spec > 0.5) spec = 1.0;
-			else spec = 0.0;
+			float nh = max(0, dot(s.Normal, h));
+			float spec = pow(nh, s.Gloss);
+
 			half4 c;
-			c.rgb = (s.Albedo * _LightColor0.rgb * NdotL + _LightColor0.rgb * spec) * (TAtten * 2);
+			c.rgb = (s.Albedo * _LightColor0.rgb * diff + _LightColor0.rgb * spec) * (atten * 2);
 			c.a = s.Alpha;
 			return c;
 		}
@@ -60,7 +58,6 @@
 
 			vDir = IN.viewDir;
 
-			o.Gloss = _Gloss;
 			o.Specular = _Specular;
 
 			if (texel.a > 0.1)
