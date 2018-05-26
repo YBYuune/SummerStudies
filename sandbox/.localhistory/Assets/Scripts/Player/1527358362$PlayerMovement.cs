@@ -16,6 +16,9 @@ public class PlayerMovement : MonoBehaviour {
     public float movementAngle = 16.0f;
     public float movementAngleSpeed = .2f;
 
+    public float airSpeedModifier = 0.3f;
+
+
     public Animator _animator;
 
     public bool onFloor = false;
@@ -41,7 +44,7 @@ public class PlayerMovement : MonoBehaviour {
         if (m_rigidbody.velocity.magnitude > MaxVelocity)
         {
             Vector3 vel = (m_rigidbody.velocity.normalized * MaxVelocity);
-            m_rigidbody.velocity = new Vector3(vel.x, m_rigidbody.velocity.y, vel.z);
+            m_rigidbody.velocity = Vector3(vel.x, m_rigidbody.velocity.y, vel.z);
         }
 
         if (Input.GetKey(KeyCode.Space))
@@ -69,13 +72,15 @@ public class PlayerMovement : MonoBehaviour {
 
     private void Move()
     {
+        float rSpd = Speed;
+        if (!onFloor) rSpd *= airSpeedModifier;
 
         // move the player based on camera position
 
         Vector3 forward = cameraPivot.forward;
         forward.y = 0.0f;
 
-        Vector3 force = (forward * Input.GetAxis("Vertical") * Speed) + (cameraPivot.right * Input.GetAxis("Horizontal") * Speed);
+        Vector3 force = (forward * Input.GetAxis("Vertical") * rSpd) + (cameraPivot.right * Input.GetAxis("Horizontal") * rSpd);
         RaycastHit hit;
         if (!Physics.Raycast(transform.position + transform.up, force.normalized, out hit, .5f))
             m_rigidbody.AddForce(force);

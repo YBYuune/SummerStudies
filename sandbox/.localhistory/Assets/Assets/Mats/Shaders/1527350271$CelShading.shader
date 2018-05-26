@@ -37,7 +37,7 @@
 			half3 h = normalize(lightDir + viewDir);
 			float nh = (dot(s.Normal, h));
 			float spec = pow(nh, s.Gloss) * s.Specular;
-			if (spec > .5) spec = 1.0;
+			if (spec > atten) spec = 1.0;
 			else spec = 0.0;
 			half4 c;
 			c.rgb = (s.Albedo * _LightColor0.rgb * NdotL + _LightColor0.rgb * spec) * (TAtten * 2);
