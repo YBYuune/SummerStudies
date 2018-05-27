@@ -77,7 +77,7 @@ public class PlayerMovement : MonoBehaviour {
         Vector3 forward = cameraPivot.forward;
         forward.y = 0.0f;
 
-        Vector3 force = (forward * Input.GetAxis("Vertical") * Speed) + (cameraPivot.right * Input.GetAxis("Horizontal") * Speed);
+        Vector3 force = (forward * Input.GetAxis("Vertical") * rSpd) + (cameraPivot.right * Input.GetAxis("Horizontal") * rSpd);
         RaycastHit hit;
         if (!Physics.Raycast(transform.position + transform.up, force.normalized, out hit, .5f))
             m_rigidbody.AddForce(force);

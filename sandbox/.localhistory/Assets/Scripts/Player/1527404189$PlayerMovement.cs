@@ -41,8 +41,12 @@ public class PlayerMovement : MonoBehaviour {
 
         if (xzVel.magnitude > MaxVelocity)
         {
+<<<<<<< HEAD
             Vector3 vel = ((xzVel).normalized * MaxVelocity);
             m_rigidbody.velocity = new Vector3(vel.x, m_rigidbody.velocity.y, vel.z);
+=======
+            m_rigidbody.velocity = m_rigidbody.velocity.normalized * MaxVelocity;
+>>>>>>> ef37fb59e3ef28d963d6f7d2cf5daafc27c4588e
         }
 
         Move();
@@ -77,7 +81,7 @@ public class PlayerMovement : MonoBehaviour {
         Vector3 forward = cameraPivot.forward;
         forward.y = 0.0f;
 
-        Vector3 force = (forward * Input.GetAxis("Vertical") * Speed) + (cameraPivot.right * Input.GetAxis("Horizontal") * Speed);
+        Vector3 force = (forward * Input.GetAxis("Vertical") * rSpd) + (cameraPivot.right * Input.GetAxis("Horizontal") * rSpd);
         RaycastHit hit;
         if (!Physics.Raycast(transform.position + transform.up, force.normalized, out hit, .5f))
             m_rigidbody.AddForce(force);

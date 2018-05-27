@@ -69,6 +69,8 @@ public class CameraController : MonoBehaviour {
 
             jumpTimer += Time.deltaTime;
 
+            Vector3 ppos = PlayerTarget.position + Vector3.up;
+
             if (jumpTimer < timeHoldingJump)
             {
                 tpos.y = posAtJump.y;
