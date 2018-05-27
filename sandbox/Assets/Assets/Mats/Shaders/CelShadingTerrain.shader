@@ -1,4 +1,4 @@
-﻿Shader "Custom/CelShadingTerrain" 
+﻿Shader "Casey/CelShadingTerrain" 
 {
 	//////////////////////////////////////////////////////////////
 	//														   	//
@@ -41,7 +41,8 @@
 			if (TAtten > .0) TAtten = 1.0;
 			else TAtten = 0.0;
 
-			c.rgb = s.Albedo * _LightColor0.rgb * (NdotL * TAtten);
+			half3 ambient = _LightColor0.rgb * 0.1;
+			c.rgb = (s.Albedo * _LightColor0.rgb * (NdotL * TAtten)) ;
 			c.a = s.Alpha;
 			return c;
 		}

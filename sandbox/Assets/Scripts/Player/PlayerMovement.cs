@@ -104,6 +104,7 @@ public class PlayerMovement : MonoBehaviour {
     {
         if (collision.gameObject.tag == "floor" || collision.gameObject.GetComponent<TagsExtended>().HasTag(TagsExtended.Tags.FLOOR))
         {
+            YPosAtJump = -99;
             RaycastHit hit;
             if (Physics.Raycast(transform.position, -transform.up, out hit, .1f)) // check if the floor is below you, so you can't jump on walls
                 onFloor = true;

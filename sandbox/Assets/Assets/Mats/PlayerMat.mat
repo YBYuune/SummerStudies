@@ -18,12 +18,30 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - _Emissive:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EmissiveMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 2800000, guid: 88c4286a57e635143941d7d0661f6d33, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _SpecularMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Floats:
+    - _Ambient: 0.1
+    - _Emission: 0
+    - _Gloss: 0
     - _Glossiness: 0
     - _Metallic: 0
+    - _Specular: 0
+    - _isTerrain: 0
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _ColorBlend: {r: 1, g: 1, b: 1, a: 1}

@@ -226,6 +226,7 @@
 
 			if (_isOutlined)
 			{
+				// basic sobel
 				FragColor = fixed4((ApplySobel(textures)), 1.0);
 
 				{ // stupid math to inverse colors to apply a color to the outline produced from the sobel.
@@ -237,7 +238,7 @@
 			}
 			else
 			{
-
+				// gaussian blur applied before sobel
 				fixed3 t00[9];
 				fixed3 t01[9];
 				fixed3 t02[9];
@@ -285,8 +286,6 @@
 					FragColor = fixed4(fixed3(1, 1, 1) - FragColor.rgb, 1.0);
 					FragColor = fixed4(FragColor.rgb * texel, 1.0);
 				}
-				//FragColor = fixed4(ApplyKernel3x3(KERNEL_EDGEDETECT,result), 1.0);
-				//FragColor = fixed4((ApplyKernel3x3(KERNEL_GBLUR, t00)), 1.0);
 			}
 			return FragColor;
 		}
