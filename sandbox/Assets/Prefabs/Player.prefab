@@ -2018,8 +2018,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1801908152647062}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.25, y: 0, z: 8.47}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: 7.61, y: -1.61, z: -56.68}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4091681172586938}
@@ -2571,12 +2571,13 @@ MonoBehaviour:
   HorizontalRotationSpeed: 100
   VerticalRotationSpeed: 100
   CamFollowSpeed: 0.116
+  maxZoom: 15
   Zoom: 10
   radius: 10
   minAngle: -45
   maxAngle: 45
   inverseYAxis: 1
-  jumpThreshold: 1
+  timeHoldingJump: 0.7
 --- !u!114 &114836193217092506
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2604,12 +2605,11 @@ MonoBehaviour:
   MeshTransform: {fileID: 4163359378919826}
   MaxVelocity: 8
   Speed: 150
-  JumpSpeed: 25
+  JumpSpeed: 10
   MaxJumpHeight: 1
   ExtraGravity: {x: 0, y: -30, z: 0}
   movementAngle: 16
   movementAngleSpeed: 0.2
-  airSpeedModifier: 1
   _animator: {fileID: 95459176474751652}
   onFloor: 0
 --- !u!136 &136838694413798228

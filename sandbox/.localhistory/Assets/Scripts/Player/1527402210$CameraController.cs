@@ -11,8 +11,6 @@ public class CameraController : MonoBehaviour {
     [Range(0, 1)]
     public float CamFollowSpeed = .5f;
 
-
-    public float maxZoom;
     public float Zoom;
     public float radius = 10.0f;
 
@@ -20,14 +18,14 @@ public class CameraController : MonoBehaviour {
 
     public bool inverseYAxis = true;
 
+    public float jumpThreshold = 5.0f;
+
     private float xAngle = 0.0f; // x axis, not mouse pos
     private float yAngle = 0.0f; // y axis, not mouse pos
 
     private Transform PlayerTarget;
 
-    public float timeHoldingJump = 1.0f;
-    private float jumpTimer = 0.0f;
-    private Vector3 posAtJump = new Vector3(-99,-99,-99);
+    private Vector3 posAtJump = new Vector3(-99, -99, -99);
     private Vector3 tpos = Vector3.zero;
 
     // Use this for initialization
@@ -57,30 +55,22 @@ public class CameraController : MonoBehaviour {
 
         if (PlayerTarget.gameObject.GetComponent<PlayerMovement>().onFloor)
         {
-            jumpTimer = 0.0f;
             posAtJump = new Vector3(-99, -99, -99);
         }
         else
         {
-            if (posAtJump.x == -99 && posAtJump.y == -99 && posAtJump.z == -99)
+            if (posAtJump.x == -99 && posAtJump.y == -99)
             {
                 posAtJump = tpos;
             }
 
-            jumpTimer += Time.deltaTime;
-
             Vector3 ppos = PlayerTarget.position + Vector3.up;
 
-            if (jumpTimer < timeHoldingJump)
+            if (ppos.y - posAtJump.y < jumpThreshold || ppos.y - posAtJump.y > -jumpThreshold)
             {
                 tpos.y = posAtJump.y;
             }
         }
-
-        // camera zoom
-        Zoom -= Input.GetAxis("Mouse ScrollWheel") * 4.0f;
-        if (Zoom > maxZoom) Zoom = maxZoom;
-        else if (Zoom < 3.0f) Zoom = 3.0f;
 
         // move the camera
         transform.position = Vector3.Lerp(transform.position, tpos, CamFollowSpeed);
@@ -88,8 +78,6 @@ public class CameraController : MonoBehaviour {
 
         tpos = PlayerTarget.position + Vector3.up;
     }
-
-
 
     private void ApplyCameraCollision()
     {

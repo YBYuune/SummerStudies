@@ -8,7 +8,7 @@
 	Properties{
 		_MainTex("Texture", 2D) = "white" {}
 
-		[Space(25)][Toggle]_Specular("Use Specular", Float) = 0
+		[Space(25)][Toggle]_Specular("Specular", Float) = 0
 		_SpecularMap("Specular", 2D) = "white" {}
 		[IntRange] _Gloss("Specular Intensity", Range(0, 256)) = 0
 

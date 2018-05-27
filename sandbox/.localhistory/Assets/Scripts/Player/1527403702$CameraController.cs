@@ -11,8 +11,6 @@ public class CameraController : MonoBehaviour {
     [Range(0, 1)]
     public float CamFollowSpeed = .5f;
 
-
-    public float maxZoom;
     public float Zoom;
     public float radius = 10.0f;
 
@@ -77,19 +75,12 @@ public class CameraController : MonoBehaviour {
             }
         }
 
-        // camera zoom
-        Zoom -= Input.GetAxis("Mouse ScrollWheel") * 4.0f;
-        if (Zoom > maxZoom) Zoom = maxZoom;
-        else if (Zoom < 3.0f) Zoom = 3.0f;
-
         // move the camera
         transform.position = Vector3.Lerp(transform.position, tpos, CamFollowSpeed);
         CamTarget.LookAt(transform);
 
         tpos = PlayerTarget.position + Vector3.up;
     }
-
-
 
     private void ApplyCameraCollision()
     {

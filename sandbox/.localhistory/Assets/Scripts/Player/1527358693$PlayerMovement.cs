@@ -36,16 +36,14 @@ public class PlayerMovement : MonoBehaviour {
         // apply extra gravity
         m_rigidbody.AddForce(ExtraGravity);
 
+        Move();
 
-        Vector3 xzVel = new Vector3(m_rigidbody.velocity.x, 0, m_rigidbody.velocity.z);
-
-        if (xzVel.magnitude > MaxVelocity)
+        if (m_rigidbody.velocity.magnitude > MaxVelocity)
         {
-            Vector3 vel = ((xzVel).normalized * MaxVelocity);
+            Vector3 vel = (m_rigidbody.velocity.normalized * MaxVelocity);
             m_rigidbody.velocity = new Vector3(vel.x, m_rigidbody.velocity.y, vel.z);
         }
 
-        Move();
         if (Input.GetKey(KeyCode.Space))
         {
             if (onFloor)
@@ -106,7 +104,7 @@ public class PlayerMovement : MonoBehaviour {
         {
             YPosAtJump = -99;
             RaycastHit hit;
-            if (Physics.Raycast(transform.position, -transform.up, out hit, .1f)) // check if the floor is below you, so you can't jump on walls
+            if (Physics.Raycast(transform.position, -transform.up, out hit, .1f))
                 onFloor = true;
         }
     }

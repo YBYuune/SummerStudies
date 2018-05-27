@@ -7,12 +7,10 @@
 	//////////////////////////////////////////////////////////////
 	Properties{
 		_MainTex("Texture", 2D) = "white" {}
-
-		[Space(25)][Toggle]_Specular("Use Specular", Float) = 0
 		_SpecularMap("Specular", 2D) = "white" {}
-		[IntRange] _Gloss("Specular Intensity", Range(0, 256)) = 0
-
-		[Space(25)]_Emissive("Emissive Texture", 2D) = "white" {}
+		_Specular("Specular Power", Range(0, 1)) = 0
+		_Gloss("Specular Intensity", Float) = 0
+		_Emissive("Emissive Texture", 2D) = "white" {}
 		_ColorBlend("Color", Color) = (1,1,1,1)
 		[MaterialToggle]_isTerrain("Is Terrain", Float) = 0
 	}
@@ -53,8 +51,7 @@
 		}
 
 		struct Input {
-			float2 uv_MainTex;
-			float2 uv_SpecularMap;
+			float2 uv_MainTex; 
 			float3 viewDir;
 			float3 worldPos;
 		};
@@ -70,7 +67,7 @@
 			vDir = IN.viewDir;
 
 			o.Gloss = _Gloss;
-			o.Specular = _Specular * tex2D(_SpecularMap, IN.uv_SpecularMap).r;
+			o.Specular = _Specular * tex2D(_MainTex, IN.uv_MainTex).r;
 
 			if (texel.a > 0.1)
 				o.Albedo = texel.rgb*_ColorBlend.rgb;

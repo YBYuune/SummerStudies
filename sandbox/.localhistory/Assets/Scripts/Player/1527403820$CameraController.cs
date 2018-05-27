@@ -77,10 +77,8 @@ public class CameraController : MonoBehaviour {
             }
         }
 
-        // camera zoom
-        Zoom -= Input.GetAxis("Mouse ScrollWheel") * 4.0f;
+        Zoom += Input.GetAxis("Mouse ScrollWheel");
         if (Zoom > maxZoom) Zoom = maxZoom;
-        else if (Zoom < 3.0f) Zoom = 3.0f;
 
         // move the camera
         transform.position = Vector3.Lerp(transform.position, tpos, CamFollowSpeed);
