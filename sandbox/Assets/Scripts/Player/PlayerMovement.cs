@@ -102,7 +102,12 @@ public class PlayerMovement : MonoBehaviour {
 
     private void OnCollisionStay(Collision collision)
     {
-        if (collision.gameObject.tag == "floor" || collision.gameObject.GetComponent<TagsExtended>().HasTag(TagsExtended.Tags.FLOOR))
+        // Get the root game object
+        //   1. Get gameobject from the collision
+        //   2. Get root gameobject from the collision gameobject's transform's root
+        GameObject rootGameObject = collision.gameObject.transform.root.gameObject;
+
+        if (rootGameObject.tag == "floor" || rootGameObject.GetComponent<TagsExtended>().HasTag(TagsExtended.Tags.FLOOR))
         {
             RaycastHit hit;
             if (Physics.Raycast(transform.position, -transform.up, out hit, .1f)) // check if the floor is below you, so you can't jump on walls
@@ -112,7 +117,12 @@ public class PlayerMovement : MonoBehaviour {
 
     private void OnCollisionExit(Collision collision)
     {
-        if (collision.gameObject.tag == "floor" || collision.gameObject.GetComponent<TagsExtended>().HasTag(TagsExtended.Tags.FLOOR))
+        // Get the root game object
+        //   1. Get gameobject from the collision
+        //   2. Get root gameobject from the collision gameobject's transform's root
+        GameObject rootGameObject = collision.gameObject.transform.root.gameObject;
+
+        if (rootGameObject.tag == "floor" || rootGameObject.GetComponent<TagsExtended>().HasTag(TagsExtended.Tags.FLOOR))
         {
             onFloor = false;
         }
