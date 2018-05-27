@@ -102,7 +102,12 @@ public class PlayerMovement : MonoBehaviour {
 
     private void OnCollisionStay(Collision collision)
     {
-        if (collision.gameObject.tag == "floor" || collision.gameObject.GetComponent<TagsExtended>().HasTag(TagsExtended.Tags.FLOOR))
+        // Get the root game object
+        //   1. Get gameobject from the collision
+        //   2. Get root gameobject from the collision gameobject's transform's root
+        GameObject rootGameObject = collision.gameObject.transform.root.gameObject;
+
+        if (rootGameObject.tag == "floor" || rootGameObject.GetComponent<TagsExtended>().HasTag(TagsExtended.Tags.FLOOR))
         {
             YPosAtJump = -99;
             RaycastHit hit;
@@ -113,7 +118,12 @@ public class PlayerMovement : MonoBehaviour {
 
     private void OnCollisionExit(Collision collision)
     {
-        if (collision.gameObject.tag == "floor" || collision.gameObject.GetComponent<TagsExtended>().HasTag(TagsExtended.Tags.FLOOR))
+        // Get the root game object
+        //   1. Get gameobject from the collision
+        //   2. Get root gameobject from the collision gameobject's transform's root
+        GameObject rootGameObject = collision.gameObject.transform.root.gameObject;
+
+        if (rootGameObject.tag == "floor" || rootGameObject.GetComponent<TagsExtended>().HasTag(TagsExtended.Tags.FLOOR))
         {
             onFloor = false;
         }
