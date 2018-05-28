@@ -20,7 +20,9 @@
 		[MaterialToggle]_isTerrain("Is Terrain", Float) = 0
 	}
 	SubShader{
-		Tags{ "RenderType" = "Opaque" }
+		Tags{ "RenderType" = "Transparent" }
+		Blend DstColor SrcColor
+		AlphaToMask On
 		CGPROGRAM
 		#pragma surface surf CelShading fullforwardshadows
 

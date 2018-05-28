@@ -13,23 +13,23 @@
 		_SpecularMap("Specular", 2D) = "white" {}
 		[IntRange] _Gloss("Specular Intensity", Range(0, 256)) = 0
 
-		[Space(25)]_EmissiveMap("Emissive Texture", 2D) = "black" {}
+		[Space(25)][Toggle]_Emission("Use Emissive", Float) = 0
+		_EmissiveMap("Emissive Texture", 2D) = "black" {}
 		_EmissiveBlend("Emissive Blend", Color) = (1, 1, 1, 1)
 
 		[Space(25)]_ColorBlend("Color", Color) = (1, 1, 1, 1)
 		[MaterialToggle]_isTerrain("Is Terrain", Float) = 0
 	}
 	SubShader{
-		Tags{ "RenderType" = "Opaque" }
+		Tags{ "RenderType" = "Transparent" }
+		Blend DstColor SrcColor
+		AlphaToMask On
 		CGPROGRAM
 		#pragma surface surf CelShading fullforwardshadows
 
 		half _Ambient;
 		half _Specular;
 		fixed _Gloss;
-
-		half3 _EmissiveBlend;
-
 		half3 vDir = half3(0,0,0);
 
 		half4 LightingCelShading(SurfaceOutput s, half3 lightDir, half3 viewDir, half atten) {
@@ -55,7 +55,7 @@
 			half3 diffuse = _LightColor0.rgb * NdotL;
 			half3 specular = _LightColor0.rgb * spec;
 
-			c.rgb = ((ambient + diffuse) * (TAtten * 2) * s.Albedo) + (s.Emission * _EmissiveBlend) + specular;
+			c.rgb = ((ambient + diffuse) * (TAtten * 2) * s.Albedo) + s.Emission + specular;
 			c.a = s.Alpha;
 			return c;
 		}

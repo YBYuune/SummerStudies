@@ -23,6 +23,8 @@
 		Tags{ "RenderType" = "Opaque" }
 		CGPROGRAM
 		#pragma surface surf CelShading fullforwardshadows
+#pragma target 3.0
+#pragma debug
 
 		half _Ambient;
 		half _Specular;

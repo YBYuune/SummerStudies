@@ -21,6 +21,8 @@
 	}
 	SubShader{
 		Tags{ "RenderType" = "Opaque" }
+		Blend DstColor SrcColor
+		AlphaToMask On
 		CGPROGRAM
 		#pragma surface surf CelShading fullforwardshadows
 

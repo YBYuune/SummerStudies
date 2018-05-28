@@ -52,10 +52,10 @@
 			half4 c;
 
 			half3 ambient = _LightColor0.rgb * _Ambient;
-			half3 diffuse = s.Albedo * _LightColor0.rgb * NdotL;
+			half3 diffuse = _LightColor0.rgb * NdotL;
 			half3 specular = _LightColor0.rgb * spec;
 
-			c.rgb = ((ambient + diffuse + specular) * (TAtten * 2)) + s.Emission;
+			c.rgb = ((ambient + diffuse) * (TAtten * 2) * s.Albedo) + s.Emission + specular;
 			c.a = s.Alpha;
 			return c;
 		}

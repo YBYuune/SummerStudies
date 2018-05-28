@@ -21,6 +21,8 @@
 	}
 	SubShader{
 		Tags{ "RenderType" = "Opaque" }
+		Blend DstColor SrcColor
+		AlphaToMask On
 		CGPROGRAM
 		#pragma surface surf CelShading fullforwardshadows
 
@@ -47,8 +49,7 @@
 			half3 h = normalize(lightDir + viewDir);
 			float nh = (dot(s.Normal, h));
 			float spec = pow(nh, s.Gloss) * s.Specular;
-			if (spec > .5) spec = 1.0;
-			else spec = 0.0;
+			spec = 0.0;
 			half4 c;
 
 			half3 ambient = _LightColor0.rgb * _Ambient;
