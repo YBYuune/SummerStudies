@@ -6,8 +6,8 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: bigrockmat
-  m_Shader: {fileID: 4800000, guid: e3a8988d904c6c6488b2d7404f7455ea, type: 3}
+  m_Name: bigrockmat_T 1
+  m_Shader: {fileID: 4800000, guid: 9c117df206e22b643a78f6ed1f15584b, type: 3}
   m_ShaderKeywords: _METALLICGLOSSMAP _NORMALMAP
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -80,6 +80,7 @@ Material:
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
+    - _OutlineThickness: 0.05
     - _Parallax: 0.02
     - _SmoothnessTextureChannel: 0
     - _Specular: 0
@@ -91,6 +92,6 @@ Material:
     m_Colors:
     - _Color: {r: 0.31132078, g: 0.18421452, b: 0, a: 1}
     - _ColorBlend: {r: 1, g: 1, b: 1, a: 0.29411766}
-    - _Diffuse: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _EmissiveBlend: {r: 1, g: 1, b: 1, a: 1}
+    - _OutlineColour: {r: 1, g: 1, b: 1, a: 1}
