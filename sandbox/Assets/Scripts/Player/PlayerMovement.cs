@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour {
 
     public float MaxVelocity;
     public float Speed;
+    public AnimationCurve JumpCurve;
     public float JumpSpeed;
     public float MaxJumpHeight = 3.0f;
     public Vector3 ExtraGravity = new Vector3(0,0,0);
@@ -102,7 +103,10 @@ public class PlayerMovement : MonoBehaviour {
 
     private void OnCollisionStay(Collision collision)
     {
-        if (collision.gameObject.tag == "floor" || collision.gameObject.GetComponent<TagsExtended>().HasTag(TagsExtended.Tags.FLOOR))
+        TagsExtended collTags = collision.gameObject.GetComponent<TagsExtended>();
+        if (collTags == null) return;
+
+        if (collTags.HasTag(TagsExtended.Tags.FLOOR))
         {
             YPosAtJump = -99;
             RaycastHit hit;
@@ -113,7 +117,10 @@ public class PlayerMovement : MonoBehaviour {
 
     private void OnCollisionExit(Collision collision)
     {
-        if (collision.gameObject.tag == "floor" || collision.gameObject.GetComponent<TagsExtended>().HasTag(TagsExtended.Tags.FLOOR))
+        TagsExtended collTags = collision.gameObject.GetComponent<TagsExtended>();
+        if (collTags == null) return;
+
+        if (collTags.HasTag(TagsExtended.Tags.FLOOR))
         {
             onFloor = false;
         }
