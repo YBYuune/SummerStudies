@@ -7,16 +7,19 @@ public class PlayerMovement : MonoBehaviour {
 
     public Transform MeshTransform;
 
+    [Header("Movement")]
     public float MaxVelocity;
     public float Speed;
-    public AnimationCurve JumpCurve;
-    public float JumpSpeed;
-    public float MaxJumpHeight = 3.0f;
-    public Vector3 ExtraGravity = new Vector3(0,0,0);
-
     public float movementAngle = 16.0f;
     public float movementAngleSpeed = .2f;
 
+    [Header("Jumping")]
+    public AnimationCurve JumpCurve;
+    public float JumpSpeed;
+    public float MaxJumpHeight = 3.0f;
+    public Vector3 ExtraGravity = new Vector3(0, 0, 0);
+
+    [Header("Misc")]
     public Animator _animator;
 
     public bool onFloor = false;

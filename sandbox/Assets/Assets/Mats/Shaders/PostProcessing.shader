@@ -9,7 +9,7 @@
 	{
 		_MainTex("Texture", 2D) = "white" {}
 		_Outline("Outline", Color) = (0,0,0,1)
-		[MaterialToggle]_isOutlined("Is Outlined", Float) = 0
+		[IntRange]_OutlineThickness("Outline Quality", Range(1024,4096)) = 4096
 	}
 		SubShader
 	{
@@ -42,7 +42,7 @@
 
 		sampler2D _MainTex;
 		half4 _Outline;
-		bool _isOutlined;
+		float _OutlineThickness;
 		float4 _MainTex_ST;
 
 		v2f vert(appdata v)
@@ -131,7 +131,7 @@
 		fixed4 frag(v2f i) : SV_Target
 		{
 			// sample the texture
-			float offset = 1.0 / 2048.0;
+			float offset = 1.0 / _OutlineThickness;
 			float2 offsets[9] = {
 				float2(-offset,  offset), // top-left
 				float2(0.0,    offset), // top-center
@@ -224,19 +224,19 @@
 
 			fixed4 FragColor = fixed4(texel, 1.0);
 
-			if (_isOutlined)
-			{
-				// basic sobel
-				FragColor = fixed4((ApplySobel(textures)), 1.0);
+			//if (_isOutlined)
+			//{
+			//	// basic sobel
+			//	FragColor = fixed4((ApplySobel(textures)), 1.0);
 
-				{ // stupid math to inverse colors to apply a color to the outline produced from the sobel.
-					_Outline = fixed4(fixed3(1,1,1) - _Outline.rgb,1.0);
-					FragColor = fixed4(FragColor.rgb * _Outline, 1.0);
-					FragColor = fixed4(fixed3(1, 1, 1) - FragColor.rgb, 1.0);
-					FragColor = fixed4(FragColor.rgb * texel, 1.0);
-				}
-			}
-			else
+			//	{ // stupid math to inverse colors to apply a color to the outline produced from the sobel.
+			//		_Outline = fixed4(fixed3(1,1,1) - _Outline.rgb,1.0);
+			//		FragColor = fixed4(FragColor.rgb * _Outline, 1.0);
+			//		FragColor = fixed4(fixed3(1, 1, 1) - FragColor.rgb, 1.0);
+			//		FragColor = fixed4(FragColor.rgb * texel, 1.0);
+			//	}
+			//}
+			//else
 			{
 				// gaussian blur applied before sobel
 				fixed3 t00[9];

@@ -6,7 +6,7 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: CelAdv
+  m_Name: Post_Sobel
   m_Shader: {fileID: 4800000, guid: 73271571462e6e043bf4ebf9a43c45e7, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
