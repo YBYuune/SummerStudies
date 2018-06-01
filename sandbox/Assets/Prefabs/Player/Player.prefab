@@ -2605,11 +2605,17 @@ MonoBehaviour:
   MeshTransform: {fileID: 4163359378919826}
   MaxVelocity: 8
   Speed: 150
+  movementAngle: 16
+  movementAngleSpeed: 0.2
+  JumpCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   JumpSpeed: 10
   MaxJumpHeight: 1
   ExtraGravity: {x: 0, y: -30, z: 0}
-  movementAngle: 16
-  movementAngleSpeed: 0.2
   _animator: {fileID: 95459176474751652}
   onFloor: 0
 --- !u!136 &136838694413798228

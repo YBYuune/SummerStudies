@@ -24,8 +24,9 @@
 		[Space(25)]_ColorBlend("Color", Color) = (1, 1, 1, 1)
 	}
 	SubShader{
-		Tags{ "RenderType" = "Opaque" }
-		CGPROGRAM
+			Tags{ "Queue" = "Transparent" "RenderType" = "Transparent" "IgnoreProjector" = "True" }
+			Blend One Zero
+			CGPROGRAM
 		#pragma surface surf CelShading fullforwardshadows
 		#pragma target 3.0
 

@@ -44,7 +44,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - _Ambient: 0.1
-    - _DissolveThreshold: 0
+    - _DissolveThreshold: 0.61
     - _Emission: 0
     - _Gloss: 0
     - _Glossiness: 0
