@@ -16,30 +16,11 @@
 		Blend DstColor SrcColor
 		AlphaToMask On
 		CGPROGRAM
-#pragma surface surf CelShading alpha:fade
+#include "CelShadingIncludes.cginc"
+#pragma surface surf CelShadingBubble alpha:fade
 
-		half _Ambient;
 	half _Specular;
 	fixed _Gloss;
-
-	half4 LightingCelShading(SurfaceOutput s, half3 lightDir, half3 viewDir, half atten) {
-
-		//specular
-
-		half3 h = normalize(lightDir + viewDir);
-		float nh = (dot(s.Normal, h));
-
-		float spec = pow(nh, s.Gloss) * s.Specular;
-		if (spec > .5) spec = 1.0;
-		else spec = 0.0;
-
-		half4 c;
-		half3 specular = _LightColor0.rgb * spec;
-
-		c.rgb = s.Albedo + specular;
-		c.a = s.Alpha * length(specular);
-		return c;
-	}
 
 	struct Input {
 		float3 viewDir;

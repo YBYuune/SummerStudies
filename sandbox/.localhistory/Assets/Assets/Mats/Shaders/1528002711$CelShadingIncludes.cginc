@@ -1,0 +1,3 @@
+#ifndef CELSHADING_INCLUDE
+#define CELSHADING_INCLUDE
+#endif

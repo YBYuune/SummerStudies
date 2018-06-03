@@ -25,42 +25,13 @@
 		Blend DstColor SrcColor
 		AlphaToMask On
 		CGPROGRAM
+		#include "CelShadingIncludes.cginc"
 		#pragma surface surf CelShading fullforwardshadows alpha:fade
 		#pragma target 3.0
 
-		half _Ambient;
 		half _Specular;
-		half3 _EmissiveBlend;
 		fixed _Gloss;
 		half3 vDir = half3(0,0,0);
-
-		half4 LightingCelShading(SurfaceOutput s, half3 lightDir, half3 viewDir, half atten) {
-			//diffuse
-			half NdotL = dot(s.Normal, lightDir);
-			if (NdotL <= 0.0)NdotL = 0.0;
-			else NdotL = 1.0;
-
-			half TAtten = atten;
-			if (TAtten > .0) TAtten = 1.0;
-			else TAtten = 0.0;
-
-			//specular
-
-			half3 h = normalize(lightDir + viewDir);
-			float nh = (dot(s.Normal, h));
-			float spec = pow(nh, s.Gloss) * s.Specular;
-			if (spec > .5) spec = 1.0;
-			else spec = 0.0;
-			half4 c;
-
-			half3 ambient = _LightColor0.rgb * _Ambient;
-			half3 diffuse = _LightColor0.rgb * NdotL;
-			half3 specular = _LightColor0.rgb * spec;
-
-			c.rgb = ((ambient + diffuse) * (TAtten * 2) * s.Albedo) + (s.Emission * _EmissiveBlend) + specular;
-			c.a = s.Alpha;
-			return c;
-		}
 
 		struct Input {
 			float2 uv_MainTex;

@@ -6,6 +6,10 @@ using UnityEngine;
 public class Buoyancy : MonoBehaviour {
     public AnimationCurve buoyancy;
     public float lengthInSeconds = 1.0f;
+
+    public bool randomOffset = false;
+    public float offset = 0.0f;
+
     private float currentTime = 0.0f;
 
     private float startY;
@@ -13,6 +17,7 @@ public class Buoyancy : MonoBehaviour {
 
     void Start () {
         startY = transform.position.y;
+        if (randomOffset) offset = Random.value;
     }
 	
 	void Update () {
@@ -24,7 +29,7 @@ public class Buoyancy : MonoBehaviour {
         body.velocity = vel;
 
         Vector3 pos = transform.position;
-        pos.y = startY + buoyancy.Evaluate(currentTime / lengthInSeconds);
+        pos.y = startY + buoyancy.Evaluate((currentTime / lengthInSeconds) + offset);
         transform.position = pos;
     }
 }
