@@ -22,7 +22,8 @@ public class Thruster : MonoBehaviour {
             parent = transform.parent;
     }
 
-    void FixedUpdate () {
+    void FixedUpdate ()
+    {
         if (active)
         {
             parent.GetComponent<Rigidbody>().AddForceAtPosition(thrustDir.normalized * thrustSpeed, transform.localPosition);
