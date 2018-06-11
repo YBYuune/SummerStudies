@@ -13,7 +13,6 @@ public class PostProcessing_GammaCorrection : MonoBehaviour {
     void Awake()
     {
         material = new Material(Shader.Find("Screen/GammaCorrection"));
-        print(material.ToString());
     }
 
     void OnRenderImage(RenderTexture source, RenderTexture destination)

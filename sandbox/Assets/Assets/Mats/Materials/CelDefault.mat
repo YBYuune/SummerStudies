@@ -41,7 +41,7 @@ Material:
     m_Floats:
     - _Ambient: 0.1
     - _Emission: 0
-    - _Gloss: 45
+    - _Gloss: 256
     - _Specular: 1
     - _isTerrain: 0
     m_Colors:

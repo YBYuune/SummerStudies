@@ -9,7 +9,6 @@ public class ThrusterEditor : Editor {
     SerializedProperty speed;
     SerializedProperty affectedBody;
     SerializedProperty active;
-    float i = 0.0f;
 
     void OnEnable()
     {

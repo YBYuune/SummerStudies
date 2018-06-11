@@ -57,4 +57,19 @@ public class CustomJoint : MonoBehaviour {
         //}
         transform.localEulerAngles = localAngles;
     }
+
+    void OnDrawGizmos()
+    {
+
+        UltiDraw.Begin();
+        //
+        UltiDraw.DrawBone(
+            transform.position, 
+            Quaternion.FromToRotation(-transform.parent.forward, transform.position - transform.parent.position) * transform.parent.rotation,
+            0.5f,
+            (transform.position - transform.parent.position).magnitude, UltiDraw.IndianRed);
+        //
+        UltiDraw.End();
+    }
+
 }
