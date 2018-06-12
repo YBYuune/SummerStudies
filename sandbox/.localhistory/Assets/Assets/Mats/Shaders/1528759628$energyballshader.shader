@@ -5,7 +5,6 @@ Shader "Unlit/EnergyBallShader"
 	Properties
 	{
 		_MainTex ("Texture", 2D) = "black" {}
-		_Color("Color Blend", Color) = (1,1,1,1)
 		_FColor("Fresnel Color", Color) = (1,1,1,1)
 		_FScale("Fresnel Scale", Float) = 1.0
 		_FPower("Fresnel Power", Float) = 1.0
@@ -47,7 +46,6 @@ Shader "Unlit/EnergyBallShader"
 			float4 _MainTex_ST;
 			
 			fixed4 _FColor;
-			fixed4 _Color;
 			float _FScale;
 			float _FPower;
 
@@ -73,7 +71,7 @@ Shader "Unlit/EnergyBallShader"
 				fixed4 col = tex2D(_MainTex, i.uv);
 				// apply fog
 				UNITY_APPLY_FOG(i.fogCoord, col);
-				return lerp(col * _Color,_FColor, i.R);
+				return lerp(col,_FColor, i.R);
 			}
 			ENDCG
 		}

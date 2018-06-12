@@ -1,4 +1,4 @@
-﻿Shader "Casey/CelShading - Transparent" 
+﻿Shader "Casey/CelShading" 
 {
 	//////////////////////////////////////////////////////////////
 	//														   	//
@@ -7,7 +7,7 @@
 	//////////////////////////////////////////////////////////////
 	Properties{
 		_MainTex("Texture", 2D) = "white" {}
-		_NormalMap("Normal Map", 2D) = "bump" {}
+		_NormalMap("Normal Map", 2D) = "gray" {}
 		_Ambient("Ambient Strength", Range(0,1)) = 0.1
 
 		[Space(25)][Toggle]_Specular("Use Specular", Float) = 0
@@ -19,19 +19,14 @@
 
 		[Space(25)]_ColorBlend("Color", Color) = (1, 1, 1, 1)
 	}
-	SubShader{
-		Tags{ "Queue" = "Transparent" "RenderType" = "Transparent" }
-		ZWrite off
-		Blend DstColor SrcColor
-		AlphaToMask On
-		CGPROGRAM
-		#include "CelShadingIncludes.cginc"
-		#pragma surface surf CelShading fullforwardshadows alpha:fade
-		#pragma target 3.0
+		SubShader{
+			Tags{ "RenderType" = "Opaque" }
+			CGPROGRAM
+			#include "CelShadingIncludes.cginc"
+		#pragma surface surf CelShading fullforwardshadows
 
 		half _Specular;
 		fixed _Gloss;
-		half3 vDir = half3(0,0,0);
 
 		struct Input {
 			float2 uv_MainTex;
@@ -42,7 +37,7 @@
 			float3 worldPos;
 		};
 
-		sampler2D _MainTex;
+		sampler2D _MainTex; 
 		sampler2D _NormalMap;
 		sampler2D _SpecularMap;
 		sampler2D _EmissiveMap;
@@ -50,8 +45,6 @@
 
 		void surf(Input IN, inout SurfaceOutput o) {
 			half4 texel = tex2D(_MainTex, IN.uv_MainTex);
-
-			vDir = IN.viewDir;
 
 			o.Gloss = _Gloss;
 			o.Specular = _Specular * tex2D(_SpecularMap, IN.uv_SpecularMap).r;

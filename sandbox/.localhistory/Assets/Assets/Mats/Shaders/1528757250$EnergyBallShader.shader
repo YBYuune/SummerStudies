@@ -4,8 +4,7 @@ Shader "Unlit/EnergyBallShader"
 {
 	Properties
 	{
-		_MainTex ("Texture", 2D) = "black" {}
-		_Color("Color Blend", Color) = (1,1,1,1)
+		_MainTex ("Texture", 2D) = "white" {}
 		_FColor("Fresnel Color", Color) = (1,1,1,1)
 		_FScale("Fresnel Scale", Float) = 1.0
 		_FPower("Fresnel Power", Float) = 1.0
@@ -46,8 +45,7 @@ Shader "Unlit/EnergyBallShader"
 			sampler2D _MainTex;
 			float4 _MainTex_ST;
 			
-			fixed4 _FColor;
-			fixed4 _Color;
+			half3 _FColor;
 			float _FScale;
 			float _FPower;
 
@@ -59,7 +57,7 @@ Shader "Unlit/EnergyBallShader"
 				UNITY_TRANSFER_FOG(o,o.vertex);
 
 				float3 posWorld = mul(unity_ObjectToWorld, v.vertex).xyz;
-				float3 normWorld = normalize(mul(unity_ObjectToWorld, v.normal));
+				float3 normWorld = v.normal;//normalize(mul(float3x3(unity_ObjectToWorld), v.normal));
 
 				float3 I = normalize(posWorld - _WorldSpaceCameraPos.xyz);
 				o.R = _FScale * pow(1.0 + dot(I, normWorld), _FPower);
@@ -73,7 +71,7 @@ Shader "Unlit/EnergyBallShader"
 				fixed4 col = tex2D(_MainTex, i.uv);
 				// apply fog
 				UNITY_APPLY_FOG(i.fogCoord, col);
-				return lerp(col * _Color,_FColor, i.R);
+				return col;
 			}
 			ENDCG
 		}

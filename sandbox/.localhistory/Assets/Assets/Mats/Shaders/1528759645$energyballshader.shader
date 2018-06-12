@@ -47,7 +47,6 @@ Shader "Unlit/EnergyBallShader"
 			float4 _MainTex_ST;
 			
 			fixed4 _FColor;
-			fixed4 _Color;
 			float _FScale;
 			float _FPower;
 
