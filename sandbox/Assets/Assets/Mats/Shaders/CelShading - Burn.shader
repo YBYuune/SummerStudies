@@ -7,7 +7,7 @@
 	//////////////////////////////////////////////////////////////
 	Properties{
 		_MainTex("Texture", 2D) = "white" {}
-		_NormalMap("Normal Map", 2D) = "gray" {}
+		_NormalMap("Normal Map", 2D) = "bump" {}
 		_Ambient("Ambient Strength", Range(0,1)) = 0.1
 
 		[Space(25)][Toggle]_Specular("Use Specular", Float) = 0
