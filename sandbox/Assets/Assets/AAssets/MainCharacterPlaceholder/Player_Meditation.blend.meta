@@ -1,0 +1,180 @@
+fileFormatVersion: 2
+guid: d36f0aca298ed7e449ae06d34d155ccc
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: Armature
+    100002: Head
+    100004: Hip_Left
+    100006: Hip_Right
+    100008: L_Ankle
+    100010: L_Bicept
+    100012: L_Calf
+    100014: L_Foot
+    100016: L_Forearm
+    100018: L_MiddleFinger_2
+    100020: L_MiddleFinger__
+    100022: L_PFinger_1
+    100024: L_PFinger_2
+    100026: L_PinkyFinger_1
+    100028: L_PinkyFinger__
+    100030: L_RingFinger_2
+    100032: L_RingFinger__
+    100034: L_Shoulder
+    100036: L_Thigh
+    100038: L_Thumb_1
+    100040: L_Thumb_2
+    100042: Neck
+    100044: //RootNode
+    100046: R_Ankle
+    100048: R_Bicept
+    100050: R_Calf
+    100052: R_Foot
+    100054: R_Foreearm
+    100056: R_MiddleFinger_2
+    100058: R_MidleFinger_1
+    100060: R_PFinger_1
+    100062: R_PFinger_2
+    100064: R_PinkyFinger_1
+    100066: R_PinkyFinger_2
+    100068: R_RingFinger_1
+    100070: R_RingFinger_2
+    100072: R_Shoulder
+    100074: R_Thigh
+    100076: R_Thumb_1
+    100078: R_Thumb_2
+    100080: Spine_1
+    100082: Spine_2
+    100084: Spine_3
+    100086: ZBrushPolyMesh3D
+    400000: Armature
+    400002: Head
+    400004: Hip_Left
+    400006: Hip_Right
+    400008: L_Ankle
+    400010: L_Bicept
+    400012: L_Calf
+    400014: L_Foot
+    400016: L_Forearm
+    400018: L_MiddleFinger_2
+    400020: L_MiddleFinger__
+    400022: L_PFinger_1
+    400024: L_PFinger_2
+    400026: L_PinkyFinger_1
+    400028: L_PinkyFinger__
+    400030: L_RingFinger_2
+    400032: L_RingFinger__
+    400034: L_Shoulder
+    400036: L_Thigh
+    400038: L_Thumb_1
+    400040: L_Thumb_2
+    400042: Neck
+    400044: //RootNode
+    400046: R_Ankle
+    400048: R_Bicept
+    400050: R_Calf
+    400052: R_Foot
+    400054: R_Foreearm
+    400056: R_MiddleFinger_2
+    400058: R_MidleFinger_1
+    400060: R_PFinger_1
+    400062: R_PFinger_2
+    400064: R_PinkyFinger_1
+    400066: R_PinkyFinger_2
+    400068: R_RingFinger_1
+    400070: R_RingFinger_2
+    400072: R_Shoulder
+    400074: R_Thigh
+    400076: R_Thumb_1
+    400078: R_Thumb_2
+    400080: Spine_1
+    400082: Spine_2
+    400084: Spine_3
+    400086: ZBrushPolyMesh3D
+    2100000: defaultMat
+    4300000: ZBrushPolyMesh3D
+    7400000: Default Take
+    7400002: ArmatureAction_004
+    9500000: //RootNode
+    13700000: ZBrushPolyMesh3D
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
