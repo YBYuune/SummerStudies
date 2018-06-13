@@ -15,6 +15,12 @@
 		SubShader
 	{
 		Tags{ "RenderType" = "Opaque" }
+		LOD 100
+
+		GrabPass
+		{
+			"_CameraDepthTexture"
+		}
 
 		Pass
 		{

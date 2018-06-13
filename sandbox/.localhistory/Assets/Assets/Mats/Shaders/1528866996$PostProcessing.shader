@@ -9,12 +9,12 @@
 	{
 		_MainTex("Texture", 2D) = "white" {}
 		_Outline("Outline", Color) = (0,0,0,1)
-		_DepthSlider("Depth", Range(0.0,0.3)) = 0.0
 		[IntRange]_OutlineThickness("Outline Quality", Range(1024,4096)) = 4096
 	}
 		SubShader
 	{
 		Tags{ "RenderType" = "Opaque" }
+		LOD 100
 
 		Pass
 		{
@@ -36,7 +36,6 @@
 		struct v2f
 		{
 			float2 uv : TEXCOORD0;
-			float4 screenPos : TEXCOORD1;
 			UNITY_FOG_COORDS(1)
 			float4 vertex : SV_POSITION;
 		};
@@ -51,7 +50,6 @@
 			v2f o;
 			o.vertex = UnityObjectToClipPos(v.vertex);
 			o.uv = TRANSFORM_TEX(v.uv, _MainTex);
-			o.screenPos = ComputeGrabScreenPos(o.vertex);
 			//UNITY_TRANSFER_FOG(o,o.vertex);
 			return o;
 		}
@@ -130,7 +128,6 @@
 
 		}
 		sampler2D _CameraDepthTexture;
-		float _DepthSlider;
 		fixed4 frag(v2f i) : SV_Target
 		{
 			// sample the texture
@@ -293,11 +290,6 @@
 
 			float depthValue;
 			depthValue = Linear01Depth(tex2Dproj(_CameraDepthTexture, UNITY_PROJ_COORD(i.screenPos)).r);
-
-			if (depthValue > _DepthSlider)
-			{
-				FragColor = fixed4(1.0 - FragColor.r, 1.0 - FragColor.g, 1.0 - FragColor.b, 1.0);
-			}
 
 			return FragColor;
 		}

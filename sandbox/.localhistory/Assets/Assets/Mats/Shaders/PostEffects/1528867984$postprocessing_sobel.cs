@@ -8,11 +8,11 @@ public class PostProcessing_Sobel : MonoBehaviour {
     private Material material;
     [Range(1, 8)]
     public int Thickness = 4;
-    [Range(0, .3f)]
+    [Range(0, 100)]
     public float Depth = 0;
 
 
-    void Start () {
+    void Awake () {
         Camera.main.depthTextureMode = DepthTextureMode.Depth;
         material = new Material(Shader.Find("Screen/PostProcessingAdvanced"));
     }

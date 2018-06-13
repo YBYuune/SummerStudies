@@ -6,7 +6,7 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: spinner
+  m_Name: EnergyBallShader
   m_Shader: {fileID: 4800000, guid: df58ecb15d49f2e42806f802d686151b, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -19,11 +19,12 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: f6ac2408440d7524a87fc3b859560feb, type: 3}
-        m_Scale: {x: 1, y: 1}
+        m_Texture: {fileID: 2800000, guid: d523c811295e89449bd2e217f7b27f4c, type: 3}
+        m_Scale: {x: 3, y: 3}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _FPower: 1
-    - _FScale: 1
+    - _FPower: 4.5
+    - _FScale: 2.81
     m_Colors:
-    - _FColor: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 0.5754717, g: 0.035288375, b: 0.1956262, a: 1}
+    - _FColor: {r: 0.90780354, g: 0, b: 1, a: 1}

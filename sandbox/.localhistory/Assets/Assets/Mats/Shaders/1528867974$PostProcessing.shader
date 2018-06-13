@@ -9,12 +9,18 @@
 	{
 		_MainTex("Texture", 2D) = "white" {}
 		_Outline("Outline", Color) = (0,0,0,1)
-		_DepthSlider("Depth", Range(0.0,0.3)) = 0.0
+		_DepthSlider("Depth", Range(0.0,1.0)) = 0.0
 		[IntRange]_OutlineThickness("Outline Quality", Range(1024,4096)) = 4096
 	}
 		SubShader
 	{
 		Tags{ "RenderType" = "Opaque" }
+		LOD 100
+
+		GrabPass
+		{
+			"_CameraDepthTexture"
+		}
 
 		Pass
 		{
