@@ -23,8 +23,8 @@ Material:
         m_Scale: {x: 3, y: 3}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _FPower: 4.5
-    - _FScale: 2.81
+    - _FPower: 6.6
+    - _FScale: 9.62
     m_Colors:
-    - _Color: {r: 0.5754717, g: 0.035288375, b: 0.1956262, a: 1}
-    - _FColor: {r: 0.90780354, g: 0, b: 1, a: 1}
+    - _Color: {r: 0.5660378, g: 0.242425, b: 0.07208972, a: 1}
+    - _FColor: {r: 0.05090718, g: 0.28235295, b: 0.015686266, a: 1}

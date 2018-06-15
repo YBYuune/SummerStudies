@@ -12,7 +12,7 @@ public class PostProcessing_GammaCorrection : MonoBehaviour {
 
     void Awake()
     {
-        material = new Material(Shader.Find("Screen/GammaCorrection"));
+        material = new Material(Shader.Find("Casey-Screen/GammaCorrection"));
     }
 
     void OnRenderImage(RenderTexture source, RenderTexture destination)

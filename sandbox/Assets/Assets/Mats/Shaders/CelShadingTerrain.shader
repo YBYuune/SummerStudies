@@ -6,6 +6,9 @@
 	//														   	//
 	//////////////////////////////////////////////////////////////
 	Properties{
+
+		_Ambient("Ambient Strength", Range(0,1)) = 0.1
+
 		// Splat Map Control Texture
 		[HideInInspector] _Control("Control (RGBA)", 2D) = "red" {}
 
@@ -26,26 +29,10 @@
 		LOD 200
 
 		CGPROGRAM
+		#include "CelShadingIncludes.cginc"
 		#pragma surface surf CelShading fullforwardshadows
 		#pragma target 3.0
 		#pragma debug
-
-		half4 LightingCelShading(SurfaceOutput s, half3 lightDir, half atten) {
-			half NdotL = dot(s.Normal, lightDir);
-			if (NdotL <= 0.0)NdotL = 0.0;
-			else NdotL = 1.0;
-			half4 c;
-
-			half TAtten = atten;
-
-			if (TAtten > .0) TAtten = 1.0;
-			else TAtten = 0.0;
-
-			half3 ambient = _LightColor0.rgb * 0.1;
-			c.rgb = (s.Albedo * _LightColor0.rgb * (NdotL * TAtten)) ;
-			c.a = s.Alpha;
-			return c;
-		}
 
 		struct Input {
 			float2 uv_Control;

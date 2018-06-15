@@ -1,4 +1,4 @@
-﻿Shader "Screen/GammaCorrection"
+﻿Shader "Casey-Screen/GammaCorrection"
 {
 	Properties
 	{
