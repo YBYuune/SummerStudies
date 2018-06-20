@@ -45,6 +45,12 @@
 		sampler2D _Splat2;
 		sampler2D _Splat3;
 
+
+		sampler2D _Normal0;
+		sampler2D _Normal1;
+		sampler2D _Normal2;
+		sampler2D _Normal3;
+
 		void surf(Input IN, inout SurfaceOutput o) {
 
 			half4 c = tex2D(_Control, IN.uv_Control);
@@ -53,6 +59,13 @@
 			half4 splat2 = tex2D(_Splat2, IN.uv_Splat0);
 			half4 splat3 = tex2D(_Splat3, IN.uv_Splat0);
 			o.Albedo = splat0 * c.r + splat1 * c.g + splat2 * c.b + splat3 * c.a;
+
+			half3 norm0 = UnpackNormal(tex2D(_Normal0, IN.uv_Splat0));
+			half3 norm1 = UnpackNormal(tex2D(_Normal1, IN.uv_Splat0));
+			half3 norm2 = UnpackNormal(tex2D(_Normal2, IN.uv_Splat0));
+			half3 norm3 = UnpackNormal(tex2D(_Normal3, IN.uv_Splat0));
+
+			o.Normal = norm0 * c.r + norm1 * c.g + norm2 * c.b + norm3 * c.a;
 		}
 		ENDCG
 	}

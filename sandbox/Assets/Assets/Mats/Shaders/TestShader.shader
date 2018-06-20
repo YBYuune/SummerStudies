@@ -19,20 +19,29 @@
 #pragma fragment frag
 #include "UnityCG.cginc"
 
+		struct appdata {
+		float4 vertex : POSITION;
+		float3 normal : Normal;
+	};
+
 		struct v2f
 	{
 		float4 grabPos : TEXCOORD0;
+		float3 normal : TEXCOORD1;
 		float4 pos : SV_POSITION;
 	};
 
-	v2f vert(appdata_base v) {
+	v2f vert(appdata v) {
 		v2f o;
 		// use UnityObjectToClipPos from UnityCG.cginc to calculate 
 		// the clip-space of the vertex
 		o.pos = UnityObjectToClipPos(v.vertex);
 		// use ComputeGrabScreenPos function from UnityCG.cginc
 		// to get the correct texture coordinate
-		o.grabPos = ComputeGrabScreenPos(o.pos);
+		float3 viewDir = WorldSpaceViewDir(o.pos);
+		float3 normWorld = normalize(viewDir);
+		o.grabPos = ComputeGrabScreenPos(o.pos*float4(normWorld.x, normWorld.y, normWorld.z,1.0));
+		o.normal = v.normal;
 		return o;
 	}
 
@@ -40,8 +49,19 @@
 
 	half4 frag(v2f i) : SV_Target
 	{
-		half4 bgcolor = tex2Dproj(_BackgroundTexture, i.grabPos);
-		return 1 - bgcolor;
+
+		float3 dnx = ddx(i.normal);
+		float3 dny = ddy(i.normal);
+
+		float lines = length(dnx) + length(dny);
+
+		lines = lines * 12.75;
+		lines = lines - 1.0;
+		lines = clamp(lines, 0.0, 1.0);
+
+		half4 bgcolor = half4((dnx*100) + (dny * 100),1);// tex2Dproj(_BackgroundTexture, i.grabPos);
+		//bgcolor = lerp(bgcolor, half4(0, 0, 0, 1), lines);
+		return bgcolor;
 	}
 		ENDCG
 	}

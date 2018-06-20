@@ -26,7 +26,7 @@ public class CustomIKJoint : MonoBehaviour {
     {
 
         rotation = Vector3.Dot(Axis, transform.localEulerAngles) + AngleOffset;
-        Debug.Log(name + " : " + transform.position);
+        //Debug.Log(name + " : " + transform.position);
     }
 
     void OnDrawGizmos() // visualise the joint location

@@ -96,7 +96,7 @@ public class CameraController : MonoBehaviour {
         // Does the ray intersect any objects excluding the player layer
         if (Physics.Raycast(transform.position, -(transform.position - CamTarget.position).normalized, out hit, Zoom))
         {
-            if (hit.transform.gameObject.tag != "Player")
+            if (hit.transform.gameObject.tag != "Player" && !hit.collider.isTrigger)
                 CamTarget.localPosition = new Vector3(CamTarget.localPosition.x, CamTarget.localPosition.y, -hit.distance);
         }
         else
