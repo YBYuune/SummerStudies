@@ -27,4 +27,4 @@ Material:
     - _FScale: 1.45
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _FColor: {r: 0, g: 0.25876093, b: 1, a: 1}
+    - _FColor: {r: 0, g: 0.25882387, b: 1, a: 1}
