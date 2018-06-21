@@ -11,6 +11,9 @@ public class CustomIKSolver : MonoBehaviour {
     public CustomIKJoint Ankle; // foot end effector location
     public Transform Target; // where the IK is pointing at
 
+    public Vector3 TargetOffset = new Vector3(0f, 0f, 0f); // some offset stuff 
+    public float TargetMultiplier = 1f;                     // some offset stuff 
+
     public int Itterations = 3; // how many times the IK is calculated per frame
 
     public bool Visualise = false;

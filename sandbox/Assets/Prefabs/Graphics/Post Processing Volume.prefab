@@ -64,7 +64,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32e1c4b049f50e44d9a9ef6b78477983, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  usesOutline: 1
+  usesColorBlend: 0
+  PostEffect_colorBlend_color: {r: 0, g: 0, b: 0, a: 0}
+  usesDistortion: 0
+  usesOutline: 0
   PostEffect_outline_blurResolution: 4096
   PostEffect_outline_sobelResolution: 4096
   PostEffect_outline_supressResolution: 4096

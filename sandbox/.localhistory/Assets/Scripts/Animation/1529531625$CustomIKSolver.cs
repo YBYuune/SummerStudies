@@ -11,6 +11,9 @@ public class CustomIKSolver : MonoBehaviour {
     public CustomIKJoint Ankle; // foot end effector location
     public Transform Target; // where the IK is pointing at
 
+    public Vector3 TargetOffset = new Vector3(0f, 0f, 0f); // some offset stuff 
+    public float TargetMultiplier = 1f;                     // some offset stuff 
+
     public int Itterations = 3; // how many times the IK is calculated per frame
 
     public bool Visualise = false;
@@ -26,9 +29,9 @@ public class CustomIKSolver : MonoBehaviour {
         {
             for (int i = 0; i < Joints.Length; i++)
             {
-                Quaternion rotTarget = Quaternion.FromToRotation(GetPivot() - Joints[i].transform.position, target - Joints[i].transform.position) * Joints[i].transform.rotation;
-
-                Joints[i].transform.rotation = Quaternion.Slerp(Joints[i].transform.rotation, rotTarget, (float)(i + 1) / (float)Joints.Length);
+                Joints[i].transform.rotation = Quaternion.Slerp(Joints[i].transform.rotation,
+                    Quaternion.FromToRotation(GetPivot() - Joints[i].transform.position, ((target + TargetOffset) * TargetMultiplier) - Joints[i].transform.position) * Joints[i].transform.rotation,
+                    (float)(i + 1) / (float)Joints.Length);
             }
         }
     }
@@ -43,7 +46,9 @@ public class CustomIKSolver : MonoBehaviour {
         if (Visualise)
         {
             UltiDraw.Begin();
-            UltiDraw.DrawSphere(transform.position, Quaternion.identity, 0.25f, UltiDraw.Cyan.Transparent(0.5f));
+            UltiDraw.DrawSphere(transform.position, Quaternion.identity, 0.25f, UltiDraw.Purple.Transparent(0.5f));
+
+            UltiDraw.DrawArrow(transform.position, transform.position + 0.25f * (transform.rotation * Axis), 0.8f, 0.02f, 0.1f, UltiDraw.Cyan.Transparent(0.5f));
             UltiDraw.End();
         }
     }

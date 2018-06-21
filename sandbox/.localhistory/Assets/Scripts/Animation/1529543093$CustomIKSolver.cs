@@ -11,6 +11,9 @@ public class CustomIKSolver : MonoBehaviour {
     public CustomIKJoint Ankle; // foot end effector location
     public Transform Target; // where the IK is pointing at
 
+    public Vector3 TargetOffset = new Vector3(0f, 0f, 0f); // some offset stuff 
+    public float TargetMultiplier = 1f;                     // some offset stuff 
+
     public int Itterations = 3; // how many times the IK is calculated per frame
 
     public bool Visualise = false;
@@ -26,7 +29,7 @@ public class CustomIKSolver : MonoBehaviour {
         {
             for (int i = 0; i < Joints.Length; i++)
             {
-                Quaternion rotTarget = Quaternion.FromToRotation(GetPivot() - Joints[i].transform.position, target - Joints[i].transform.position) * Joints[i].transform.rotation;
+                Quaternion rotTarget = Quaternion.FromToRotation(GetPivot() - Joints[i].transform.position, ((target + TargetOffset) * TargetMultiplier) - Joints[i].transform.position) * Joints[i].transform.rotation;
 
                 Joints[i].transform.rotation = Quaternion.Slerp(Joints[i].transform.rotation, rotTarget, (float)(i + 1) / (float)Joints.Length);
             }
