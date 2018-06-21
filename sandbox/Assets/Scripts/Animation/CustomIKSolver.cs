@@ -35,7 +35,7 @@ public class CustomIKSolver : MonoBehaviour {
 
     public Vector3 GetPivot()
     {
-        return Ankle.transform.position + Ankle.transform.rotation * Ankle.StartOffset;
+        return Ankle.transform.position;// + Ankle.transform.rotation * Ankle.StartOffset; // useless bs
     }
 
     void OnDrawGizmos() // visualise the joint location

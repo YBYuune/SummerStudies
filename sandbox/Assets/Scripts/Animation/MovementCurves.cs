@@ -12,6 +12,8 @@ public class MovementCurves : MonoBehaviour {
 
     public float YOffset;
 
+    //[HideInInspector] public RaycastHit hit;
+
     private Vector3 pos;
     // Use this for initialization
     void Start () {
@@ -24,6 +26,13 @@ public class MovementCurves : MonoBehaviour {
 
         newPos.x = XAxisCurve.Evaluate(Time.time + TimeOffset);
         newPos.y = YAxisCurve.Evaluate(Time.time + TimeOffset) + YOffset;
+
+        //IKSurfaceHandler surf = gameObject.GetComponent<IKSurfaceHandler>();
+        //
+        //if (surf != null)
+        //{
+        //    surf.touching = (Physics.Raycast(transform.position, Vector3.down, out hit, surf.errorDistance));
+        //}
 
         transform.localPosition = newPos;
     }
