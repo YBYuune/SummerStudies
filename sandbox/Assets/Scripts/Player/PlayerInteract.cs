@@ -113,9 +113,12 @@ public class PlayerInteract : MonoBehaviour {
 
     private void MountVehicle(DrivingComponent drivingComp)
     {
+        Debug.Log("Mounting: " + drivingComp.gameObject.name);
+
         // Parent player to mount location
         gameObject.transform.SetParent(drivingComp.mountLocation, false);
         gameObject.transform.SetPositionAndRotation(drivingComp.mountLocation.position, drivingComp.mountLocation.rotation);
+        
 
         playerComp.playerFlags |= PlayerComp.c_MOUNTED;
     }
