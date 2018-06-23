@@ -64,6 +64,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4091681172586938}
+  - component: {fileID: 114524946130152940}
   m_Layer: 0
   m_Name: CameraPivot
   m_TagString: Untagged
@@ -583,6 +584,7 @@ GameObject:
   - component: {fileID: 114868135784132032}
   - component: {fileID: 114836193217092506}
   - component: {fileID: 136838694413798228}
+  - component: {fileID: 114210600355671302}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1521,6 +1523,40 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114210600355671302
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1801908152647062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15d4bbeb297edc345a6ce9b67fcef06b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerFlags: 0
+--- !u!114 &114524946130152940
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1039010839003336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbe4828b12f475f41b1b0d00377b341b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CamTarget: {fileID: 0}
+  HorizontalRotationSpeed: 100
+  VerticalRotationSpeed: 100
+  CamFollowSpeed: 0.116
+  maxZoom: 15
+  Zoom: 10
+  radius: 10
+  minAngle: -45
+  maxAngle: 45
+  inverseYAxis: 1
+  timeHoldingJump: 0.7
 --- !u!114 &114836193217092506
 MonoBehaviour:
   m_ObjectHideFlags: 1
