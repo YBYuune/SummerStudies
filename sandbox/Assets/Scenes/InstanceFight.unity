@@ -2795,7 +2795,20 @@ Prefab:
       propertyPath: CamTarget
       value: 
       objectReference: {fileID: 265133832}
-    m_RemovedComponents: []
+    - target: {fileID: 4163359378919826, guid: cd21fad74b9e82648985f6ebe2ddcaf7, type: 2}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4091681172586938, guid: cd21fad74b9e82648985f6ebe2ddcaf7, type: 2}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4424069521450418, guid: cd21fad74b9e82648985f6ebe2ddcaf7, type: 2}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 54042469333562234, guid: cd21fad74b9e82648985f6ebe2ddcaf7, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: cd21fad74b9e82648985f6ebe2ddcaf7, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1311820988
@@ -4631,31 +4644,19 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2075230020}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 65fe38c768301f642a16febf558199e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   sphereCollider: {fileID: 613728203}
---- !u!114 &2075230027
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2075230020}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15d4bbeb297edc345a6ce9b67fcef06b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerFlags: 0
 --- !u!114 &2075230028
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2075230020}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1679b32b3a6c8f54dab3768596b97a36, type: 3}
   m_Name: 
